@@ -1,0 +1,74 @@
+body {
+  background-image: url("../assets/images/css-images/sign-background.jpg");
+  font-family: "Montserrat", sans-serif;
+  font-size: "Montserrat", sans-serif-body;
+  line-height: 1em;
+}
+
+.auth-buttons {
+  border: 1px solid #ccc;
+  margin-right: 0.5rem;
+  border-radius: 3px;
+  padding: 10px 30px;
+  color: #fff;
+  text-transform: uppercase;
+  line-height: 1em;
+  letter-spacing: 0.2rem;
+  background-color: transparent;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.auth-buttons:hover {
+  color: rgb(37, 37, 37);
+  background-color: #ccc;
+  /* color: #363636; */
+}
+
+.menu-item {
+  float: left;
+}
+
+.card-items {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.rent-buttons {
+  border: 1px solid rgb(37, 37, 37);
+  background-color: #ccc;
+  color: rgb(37, 37, 37);
+  text-transform: uppercase;
+  line-height: 0.5em;
+  letter-spacing: 0.1rem;
+  transition: background-color 0.3s ease-in-out, color 0.2s ease-in-out;
+  border-radius: 3px;
+  padding: 10px 20px;
+  margin-left: 1rem;
+}
+
+.rent-buttons:hover {
+  color: #ccc;
+  background-color: rgb(37, 37, 37);
+}
+
+.rent-button-container {
+  width: 13%;
+  display: flex;
+  float: right;
+  margin-top: 1.75rem;
+}
+
+.admin_panel-button,
+.admin_panel-button > button {
+  color: #222222;
+  backgroundcolor: #ccc;
+  padding: 0.5rem;
+  float: left;
+  margin: 0.5rem 1rem;
+  position: absolute;
+}
+
+.navbar {
+  position: relative;
+}
