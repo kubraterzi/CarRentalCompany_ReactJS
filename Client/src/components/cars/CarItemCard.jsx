@@ -17,10 +17,14 @@ import {
   TableRow,
 } from "@mui/material";
 
-import Slide from "../utilities/Slide";
+import CarImagesSlider from "../sliders/CarImagesSlider";
 
-const CarItemCard = () => {
+const CarItemCard = (props) => {
   let navigate = useNavigate();
+
+  const handleNavigateToDetail = () => {
+    navigate(`/cars/${props.car.carID}`);
+  };
 
   const buttonStyle = {
     fontSize: "0.65rem",
@@ -30,18 +34,16 @@ const CarItemCard = () => {
   };
   return (
     <Card sx={{ width: 300, marginLeft: "2rem", marginBottom: "2rem" }}>
-      <CardMedia
-      // component="img"
-      // alt="green iguana"
-      // height="200"
-      // width="200"
-      // image={bmw}
-      >
-        <Slide />
+      <CardMedia>
+        <CarImagesSlider carId={props.car.carID} />
       </CardMedia>
       <CardContent>
-        <Typography gutterBottom component="div" sx={{ fontSize: "1.25rem" }}>
-          Lizard
+        <Typography
+          gutterBottom
+          component="div"
+          sx={{ fontSize: "1.25rem", textAlign: "center" }}
+        >
+          {props.car.brandName} | {props.car.brandModel}
         </Typography>
 
         <TableContainer component={Paper} sx={{ marginTop: "1rem" }}>
@@ -56,7 +58,7 @@ const CarItemCard = () => {
                   Model
                 </TableCell>
                 <TableCell align="right" sx={{ fontSize: "0.85rem" }}>
-                  2018
+                  {props.car.modelYear}
                 </TableCell>
               </TableRow>
               <TableRow sx={{}}>
@@ -68,7 +70,7 @@ const CarItemCard = () => {
                   Color
                 </TableCell>
                 <TableCell align="right" sx={{ fontSize: "0.85rem" }}>
-                  White
+                  {props.car.colorName}
                 </TableCell>
               </TableRow>
               <TableRow sx={{}}>
@@ -80,7 +82,7 @@ const CarItemCard = () => {
                   Daily Price
                 </TableCell>
                 <TableCell align="right" sx={{ fontSize: "0.85rem" }}>
-                  $180
+                  {props.car.dailyPrice}
                 </TableCell>
               </TableRow>
             </TableBody>
@@ -89,7 +91,7 @@ const CarItemCard = () => {
       </CardContent>
       <CardActions sx={{ float: "right" }}>
         <Button sx={buttonStyle}>Rent</Button>
-        <Button sx={buttonStyle} onClick={() => navigate("/cars/id")}>
+        <Button sx={buttonStyle} onClick={handleNavigateToDetail}>
           Details
         </Button>
       </CardActions>
