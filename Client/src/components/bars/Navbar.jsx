@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -12,6 +12,17 @@ import CarRentalIcon from "@mui/icons-material/CarRental";
 
 const Navbar = () => {
   let navigate = useNavigate();
+  const location = useLocation();
+  const [signButtonVisibility, setSignButtonVisibility] = React.useState(true);
+
+  const handleNavigateToSign = () => {
+    navigate("/signin");
+  };
+
+  useEffect(() => {
+    location.pathname.includes("signin") && setSignButtonVisibility(false);
+  }, [navigate]);
+
   return (
     <div className="navbar">
       <AppBar position="static" sx={{ backgroundColor: "#222222" }}>
@@ -74,15 +85,16 @@ const Navbar = () => {
             </Box>
 
             <Box sx={{ flexGrow: 0 }}>
-              <button
-                className="auth-buttons"
-                id="login-button"
-                onClick={() => navigate("/signin")}
-              >
-                {" "}
-                Sign{" "}
-              </button>
-              {/* <button className="auth-buttons" id="login-button">Sign Up</button> */}
+              {signButtonVisibility && (
+                <button
+                  className="auth-buttons"
+                  id="login-button"
+                  onClick={handleNavigateToSign}
+                >
+                  {" "}
+                  Sign{" "}
+                </button>
+              )}
             </Box>
           </Toolbar>
         </Container>
