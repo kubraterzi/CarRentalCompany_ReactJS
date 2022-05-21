@@ -20,7 +20,7 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    location.pathname.includes("signin") && setSignButtonVisibility(false);
+    setSignButtonVisibility(!location.pathname.includes("signin"));
   }, [navigate]);
 
   return (
