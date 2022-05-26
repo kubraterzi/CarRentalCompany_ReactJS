@@ -57,6 +57,7 @@ body {
   display: flex;
   float: right;
   margin-top: 1.75rem;
+  margin-bottom: 2.5rem;
 }
 
 .admin_panel-button,
@@ -71,4 +72,14 @@ body {
 
 .navbar {
   position: relative;
+}
+
+.input-error-message {
+  color: red;
+  font-size: 0.75rem;
+  margin: 0;
+}
+
+.table-title {
+  font-size: 1.25rem;
 }
