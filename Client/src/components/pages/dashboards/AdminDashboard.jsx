@@ -1,6 +1,6 @@
 import React from "react";
 
-import CarsTable from "../../cars/CarsTable";
+import UndeliveredCars from "../../tables/UndeliveredCars";
 import Copyright from "../../utilities/Copyright";
 
 import { Container, Grid, Paper } from "@mui/material";
@@ -37,9 +37,7 @@ const AdminDashboard = () => {
         </Grid>
         {/* Recent Orders */}
         <Grid item xs={12}>
-          <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-            <CarsTable />
-          </Paper>
+          <UndeliveredCars />
         </Grid>
       </Grid>
       <Copyright />

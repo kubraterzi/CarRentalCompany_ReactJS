@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -12,7 +12,7 @@ import CarRentalIcon from "@mui/icons-material/CarRental";
 
 const Navbar = () => {
   let navigate = useNavigate();
-  const location = useLocation();
+  const { pathname } = useLocation();
   const [signButtonVisibility, setSignButtonVisibility] = React.useState(true);
 
   const handleNavigateToSign = () => {
@@ -20,7 +20,7 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    setSignButtonVisibility(!location.pathname.includes("signin"));
+    setSignButtonVisibility(!pathname.includes("signin"));
   }, [navigate]);
 
   return (
@@ -70,14 +70,14 @@ const Navbar = () => {
               </Button>
               <Button
                 sx={{ my: 2, color: "white", display: "block" }}
-                onClick={() => navigate("about")}
+                onClick={() => navigate("/about")}
               >
                 {" "}
                 About{" "}
               </Button>
               <Button
                 sx={{ my: 2, color: "white", display: "block" }}
-                onClick={() => navigate("contact")}
+                onClick={() => navigate("/contact")}
               >
                 {" "}
                 Contact{" "}
@@ -99,7 +99,6 @@ const Navbar = () => {
           </Toolbar>
         </Container>
       </AppBar>
-      <Outlet />
     </div>
   );
 };

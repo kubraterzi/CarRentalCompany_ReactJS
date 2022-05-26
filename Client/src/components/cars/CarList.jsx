@@ -24,7 +24,7 @@ const CarList = () => {
     return data.filter(
       (item) =>
         keys.some((key) =>
-          item[key].toString().toLowerCase().includes(filteredSearch)
+          item[key]?.toString().toLowerCase().includes(filteredSearch)
         ) // satırlarca or sorgusu yazmak yerine filtrelerken olabilecekleri listeleyen method some metodudur.
     );
   };
@@ -70,26 +70,27 @@ const CarList = () => {
   }, [selectedStatus]);
 
   return (
-    <div>
-      <UserLayout>
-        <AppBar
-          position="static"
-          sx={{ backgroundColor: "transparent", boxShadow: "none" }}
-        >
-          <Toolbar>
-            <Filter
-              filteredSearch={filteredSearch}
-              setFilteredSearch={setFilteredSearch}
-            />{" "}
-          </Toolbar>
-        </AppBar>
-        <div className="card-items">
-          {filteredCarsBySearch.map((car) => (
-            <CarItemCard key={car.carID} car={car} />
-          ))}
-        </div>
-      </UserLayout>
-    </div>
+    <>
+      {/* <UserLayout> */}
+      <AppBar
+        position="static"
+        sx={{ backgroundColor: "transparent", boxShadow: "none" }}
+      >
+        <Toolbar>
+          <Filter
+            filteredSearch={filteredSearch}
+            setFilteredSearch={setFilteredSearch}
+            switcherVisibility={true}
+          />{" "}
+        </Toolbar>
+      </AppBar>
+      <div className="card-items">
+        {filteredCarsBySearch.map((car) => (
+          <CarItemCard key={car.carID} car={car} />
+        ))}
+      </div>
+      {/* </UserLayout> */}
+    </>
   );
 };
 
