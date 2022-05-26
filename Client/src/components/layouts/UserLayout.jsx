@@ -7,6 +7,7 @@ import Grid from "@mui/material/Grid";
 import Navbar from "../bars/Navbar";
 import BrandsSidebar from "../bars/BrandsSidebar";
 import ColorsSidebar from "../bars/ColorsSidebar";
+import { Outlet } from "react-router-dom";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -45,7 +46,7 @@ const UserLayout = (props) => {
             </Grid>
           </Grid>
           <Grid item xs={9}>
-            {props.children}
+            <Outlet />
           </Grid>
         </Grid>
       </Box>

@@ -40,7 +40,11 @@ const menuItems = [
     { label: "Rentals", icon: <DirectionsCarIcon />, url: "rentals" },
   ],
   [
-    { label: "Rented", icon: <EventBusyIcon />, url: "rented" },
+    {
+      label: "Undelivered",
+      icon: <EventBusyIcon />,
+      url: "undelivered",
+    },
     { label: "Rentable", icon: <EventAvailableIcon />, url: "rentable" },
   ],
 ];
@@ -76,14 +80,17 @@ const AdminLayout = () => {
 
   //todo: create a new component for this
   const listAdminMenu = React.useMemo(() => {
-    console.log("aaa");
     return (
       <Box sx={{ width: "250px" }} role="presentation" onClick={toggleDrawer}>
         {menuItems.map((group, groupIndex) => (
           <React.Fragment key={groupIndex}>
             <List>
               {group.map((item, index) => (
-                <ListItem key={index} onClick={() => navigate(item.url)}>
+                <ListItem
+                  key={index}
+                  onClick={() => navigate(item.url)}
+                  sx={{ cursor: "pointer" }}
+                >
                   <ListItemIcon>{item.icon}</ListItemIcon>
                   <ListItemText primary={item.label} />
                 </ListItem>

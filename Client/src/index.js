@@ -10,6 +10,8 @@ import "react-slideshow-image/dist/styles.css";
 
 import "./styles/main.css";
 import "./styles/sign.css";
+import "./styles/contact.css";
+import "./styles/about.css";
 import { BrowserRouter } from "react-router-dom";
 import { store } from "./redux/store";
 
