@@ -66,7 +66,7 @@ const Filter = (props) => {
           onChange={handleChange}
         />
       </Search>
-      <Switcher />
+      {props.switcherVisibility && <Switcher />}
     </>
   );
 };

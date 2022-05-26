@@ -164,7 +164,7 @@ input::placeholder {
   top: 50%;
   left: 30px;
   width: calc(50% - 30px);
-  min-height: 420px;
+  min-height: 460px;
   background-color: #fff;
   border-radius: 3px;
   box-shadow: 2px 0 15px rgba(#000, 0.25);
@@ -178,7 +178,7 @@ input::placeholder {
 }
 
 .forms_title {
-  margin-bottom: 45px;
+  margin-bottom: 40px; /*45*/
   font-size: 1.5rem;
   font-weight: "Montserrat", sans-serif-medium;
   line-height: 1em;
@@ -188,7 +188,7 @@ input::placeholder {
 }
 
 .forms_field:not(:last-of-type) {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .forms_field-input {
@@ -248,7 +248,7 @@ input::placeholder {
 .user_forms-signup,
 .user_forms-login {
   position: absolute;
-  top: 70px;
+  top: 50px; /*70*/
   left: 40px;
   width: calc(100% - 80px);
   transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out,
