@@ -21,7 +21,7 @@ const Navbar = () => {
 
   useEffect(() => {
     setSignButtonVisibility(!pathname.includes("signin"));
-  }, [navigate]);
+  }, [navigate, pathname]);
 
   return (
     <div className="navbar">

@@ -9,7 +9,6 @@ import {
   Typography,
 } from "@mui/material";
 
-import UserLayout from "../layouts/UserLayout";
 import CarImagesSlider from "./../sliders/CarImagesSlider";
 import { useParams } from "react-router-dom";
 import { fetchCarDetailsByCarId } from "../../redux/slices/cars/carsSlice";

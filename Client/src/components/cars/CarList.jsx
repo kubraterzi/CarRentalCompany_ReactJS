@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 
 import { useSelector } from "react-redux";
 
-import UserLayout from "../layouts/UserLayout";
 import CarItemCard from "./CarItemCard";
 import {
   fetchAllCars,

@@ -5,7 +5,7 @@ const validations = yup.object().shape({
 
   password: yup
     .string()
-    .min(8, "password must be a minimum of 8 characters")
+    .min(2, "password must be a minimum of 8 characters")
     .required(),
 
   //   passwordConfirm: yup

@@ -17,7 +17,7 @@ const About = () => {
                 <h1 className="section-heading">About Me</h1>
               </div>
               <div className="img-ml">
-                <img src={ceo} />
+                <img alt="" src={ceo} />
               </div>
               <div>
                 <div className="intro">

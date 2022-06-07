@@ -38,19 +38,18 @@ const CreateDescriptionForm = (props) => {
 
   console.log(props.currentCarDescription);
 
-  const { handleSubmit, handleChange, handleBlur, touched, values, errors } =
-    useFormik({
-      initialValues: {
-        passengerCapacity: props.currentCarDescription.passengerCapacity ?? "",
-        loadCapacity: props.currentCarDescription?.loadCapacity ?? "",
-        fuelType: props.currentCarDescription?.fuelType ?? "",
-      },
-      onSubmit: (values) => {
-        console.log(values);
-        // props.setCarDescription();
-      },
-      validationSchema,
-    });
+  const { handleChange, handleBlur, touched, values, errors } = useFormik({
+    initialValues: {
+      passengerCapacity: props.currentCarDescription.passengerCapacity ?? "",
+      loadCapacity: props.currentCarDescription?.loadCapacity ?? "",
+      fuelType: props.currentCarDescription?.fuelType ?? "",
+    },
+    onSubmit: (values) => {
+      console.log(values);
+      // props.setCarDescription();
+    },
+    validationSchema,
+  });
 
   console.log(values);
 

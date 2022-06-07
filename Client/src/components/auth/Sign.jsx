@@ -24,7 +24,7 @@ const Sign = () => {
         <div className="user_options-container">
           <div className="user_options-text">
             <div className="user_options-unregistered">
-              <h2 className="user_unregistered-title">
+              <h2 className="user_unregistered-title" style={{ color: "#ccc" }}>
                 Don't have an account?
               </h2>
               <p className="user_unregistered-text">

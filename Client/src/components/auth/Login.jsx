@@ -3,16 +3,28 @@ import React from "react";
 import { useFormik } from "formik";
 
 import validationSchema from "./validations/loginValidations";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../redux/slices/auth/authSlice";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const dispatch = useDispatch();
+  // const currentUserToken = useSelector((state) => state.auth.currentUserToken);
+  const navigate = useNavigate();
+
+  const handleNavigateForUser = () => {
+    navigate("/");
+  };
+
   const { handleSubmit, handleChange, handleBlur, touched, values, errors } =
     useFormik({
       initialValues: {
         email: "",
         password: "",
       },
-      onSubmit: (values) => {
-        console.log(values);
+      onSubmit: async (values) => {
+        await dispatch(login(values));
+        handleNavigateForUser();
       },
       validationSchema,
     });
