@@ -6,6 +6,7 @@ import colorsReducer from "./slices/colors/colorsSlice";
 import statusesReducer from "./slices/statuses/statusesSlice";
 import rentalsReducer from "./slices/rentals/rentalsSlice";
 import usersReducer from "./slices/users/usersSlice";
+import authReducer from "./slices/auth/authSlice";
 
 export const store = configureStore({
   reducer: {
@@ -16,5 +17,6 @@ export const store = configureStore({
     statuses: statusesReducer,
     rentals: rentalsReducer,
     users: usersReducer,
+    auth: authReducer,
   },
 });
