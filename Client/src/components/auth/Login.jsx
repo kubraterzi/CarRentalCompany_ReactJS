@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const dispatch = useDispatch();
-  // const currentUserToken = useSelector((state) => state.auth.currentUserToken);
+  const currentUserInfo = useSelector((state) => state.auth.userInfo);
   const navigate = useNavigate();
 
   const handleNavigateForUser = () => {

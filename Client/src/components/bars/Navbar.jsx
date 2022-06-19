@@ -9,11 +9,18 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import CarRentalIcon from "@mui/icons-material/CarRental";
+import { logout } from "../../redux/slices/auth/authSlice";
+import { useDispatch } from "react-redux";
 
 const Navbar = () => {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { pathname } = useLocation();
   const [signButtonVisibility, setSignButtonVisibility] = React.useState(true);
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
 
   const handleNavigateToSign = () => {
     navigate("/signin");
@@ -83,6 +90,14 @@ const Navbar = () => {
                 Contact{" "}
               </Button>
             </Box>
+            <button
+              className="auth-buttons"
+              id="login-button"
+              onClick={handleLogout}
+            >
+              {" "}
+              Logout bacım{" "}
+            </button>
 
             <Box sx={{ flexGrow: 0 }}>
               {signButtonVisibility && (

@@ -14,14 +14,17 @@ import "./styles/contact.css";
 import "./styles/about.css";
 import { BrowserRouter } from "react-router-dom";
 import { store } from "./redux/store";
+import AuthChecker from "./components/auth/AuthChecker";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <AuthChecker>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </AuthChecker>
     </Provider>
   </React.StrictMode>
 );
