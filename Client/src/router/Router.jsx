@@ -16,6 +16,8 @@ import Cars from "../components/tables/Cars";
 import Users from "../components/tables/Users";
 import Rentals from "../components/tables/Rentals";
 import RentableCars from "../components/tables/RentableCars";
+import Brands from "../components/tables/Brands";
+import Colors from "../components/tables/Colors";
 
 const Router = () => {
   return (
@@ -37,6 +39,8 @@ const Router = () => {
         <Route path="contact" element={<Contact />} /> */}
         <Route path="undelivered" element={<UndeliveredCars />} />
         <Route path="cars" element={<Cars />} />
+        <Route path="brands" element={<Brands />} />
+        <Route path="colors" element={<Colors />} />
         <Route path="users" element={<Users />} />
         <Route path="rentals" element={<Rentals />} />
         <Route path="rentable" element={<RentableCars />} />

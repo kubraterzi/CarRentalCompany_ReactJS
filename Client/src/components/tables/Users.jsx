@@ -14,6 +14,7 @@ import {
 import TableView from "../utilities/TableView";
 import { fetchAllUsers } from "./../../redux/slices/users/usersSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { filterBySearchBar } from "../../helpers/filterBySearchBar";
 
 const Users = () => {
   const keys = ["firstName", "lastName", "email"];
@@ -25,6 +26,9 @@ const Users = () => {
   useEffect(() => {
     dispatch(fetchAllUsers());
   }, []);
+
+  const filteredUsers = filterBySearchBar(keys, allUsers, filteredSearch);
+
   return (
     <TableView
       filteredSearch={filteredSearch}
@@ -51,7 +55,7 @@ const Users = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {allUsers.map((user) => (
+            {filteredUsers.map((user) => (
               <TableRow key={user.userID}>
                 <TableCell>{user.firstName}</TableCell>
                 <TableCell>{user.lastName}</TableCell>

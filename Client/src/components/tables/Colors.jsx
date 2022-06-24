@@ -12,36 +12,34 @@ import {
 } from "@mui/material";
 
 import TableView from "../utilities/TableView";
-import { fetchAllBrands } from "./../../redux/slices/brands/brandsSlice";
-import { filterBySearchBar } from "../../helpers/filterBySearchBar";
+import { fetchAllColors } from "./../../redux/slices/colors/colorsSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { filterBySearchBar } from "../../helpers/filterBySearchBar";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const keys = ["brandName", "brandModel"];
-
-const Brands = () => {
+const keys = ["colorName"];
+const Users = () => {
   const dispatch = useDispatch();
-  const allBrands = useSelector((state) => state.brands.items);
+  const allColors = useSelector((state) => state.colors.items);
   const [filteredSearch, setFilteredSearch] = React.useState("");
   const [seeMoreLinkVisibility, setSeeMoreLinkVisibility] =
     React.useState(true);
-
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(fetchAllBrands());
+    dispatch(fetchAllColors());
   }, []);
 
   useEffect(() => {
-    setSeeMoreLinkVisibility(!pathname.includes("brands"));
+    setSeeMoreLinkVisibility(!pathname.includes("colors"));
   }, [navigate]);
 
-  const navigateToBrands = () => {
-    navigate("brands");
+  const navigateToColors = () => {
+    navigate("colors");
   };
 
-  const filteredBrands = filterBySearchBar(keys, allBrands, filteredSearch);
+  const filteredColors = filterBySearchBar(keys, allColors, filteredSearch);
 
   return (
     <TableView
@@ -62,16 +60,14 @@ const Brands = () => {
         <Table size="small">
           <TableHead>
             <TableRow>
-              <TableCell sx={{ fontSize: "1.15rem" }}>Brand</TableCell>
-              <TableCell sx={{ fontSize: "1.15rem" }}>Brand Model</TableCell>
+              <TableCell sx={{ fontSize: "1.15rem" }}>Color Name</TableCell>
               <TableCell align="right">Buttons</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {filteredBrands.map((brand) => (
-              <TableRow key={brand.brandID}>
-                <TableCell>{brand.brandName}</TableCell>
-                <TableCell>{brand.brandModel}</TableCell>{" "}
+            {filteredColors.map((color) => (
+              <TableRow key={color.colorID}>
+                <TableCell>{color.colorName}</TableCell>
                 <TableCell align="right">Buttons</TableCell>
               </TableRow>
             ))}
@@ -80,10 +76,10 @@ const Brands = () => {
         {seeMoreLinkVisibility && (
           <Link
             color="secondary"
-            onClick={navigateToBrands}
+            onClick={navigateToColors}
             sx={{ mt: 3, cursor: "pointer" }}
           >
-            See more currently leased brands
+            See more currently leased colors
           </Link>
         )}
       </Paper>
@@ -91,4 +87,4 @@ const Brands = () => {
   );
 };
 
-export default Brands;
+export default Users;
