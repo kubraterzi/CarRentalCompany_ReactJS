@@ -20,6 +20,7 @@ import { fetchAllCars } from "../../redux/slices/cars/carsSlice";
 import { useLocation, useNavigate } from "react-router-dom";
 import TableView from "../utilities/TableView";
 import CarModal from "../cars/modals/CarModal";
+import { filterBySearchBar } from "../../helpers/filterBySearchBar";
 
 const Cars = () => {
   //constants
@@ -65,16 +66,7 @@ const Cars = () => {
     fetchData();
   }, []);
 
-  const filterBySearchBar = (data) => {
-    return data.filter(
-      (item) =>
-        keys.some((key) =>
-          item[key]?.toString().toLowerCase().includes(filteredSearch)
-        ) // satırlarca or sorgusu yazmak yerine filtrelerken olabilecekleri listeleyen method some metodudur.
-    );
-  };
-
-  const filteredCars = filterBySearchBar(allCars);
+  const filteredCars = filterBySearchBar(keys, allCars, filteredSearch);
 
   return (
     <TableView

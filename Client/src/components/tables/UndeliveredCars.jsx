@@ -16,6 +16,7 @@ import {
 
 import TableView from "../utilities/TableView";
 import { fetchUndeliveredCars } from "../../redux/slices/rentals/rentalsSlice";
+import { filterBySearchBar } from "../../helpers/filterBySearchBar";
 
 const UndeliveredCars = () => {
   const keys = ["carName", "customerInfo", "companyName", "rentDate"];
@@ -35,15 +36,6 @@ const UndeliveredCars = () => {
     navigate("undelivered");
   };
 
-  const filterBySearchBar = (data) => {
-    return data.filter(
-      (item) =>
-        keys.some((key) =>
-          item[key]?.toString().toLowerCase().includes(filteredSearch)
-        ) // satırlarca or sorgusu yazmak yerine filtrelerken olabilecekleri listeleyen method some metodudur.
-    );
-  };
-
   useEffect(() => {
     dispatch(fetchUndeliveredCars());
   }, []);
@@ -52,7 +44,11 @@ const UndeliveredCars = () => {
     setSeeMoreLinkVisibility(!pathname.includes("undelivered"));
   }, [navigate]);
 
-  const filteredCars = filterBySearchBar(currentlyLeasedCars);
+  const filteredCars = filterBySearchBar(
+    keys,
+    currentlyLeasedCars,
+    filteredSearch
+  );
 
   return (
     <TableView

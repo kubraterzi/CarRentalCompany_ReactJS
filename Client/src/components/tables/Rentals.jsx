@@ -16,6 +16,7 @@ import {
 
 import TableView from "../utilities/TableView";
 import { fetchAllRentals } from "../../redux/slices/rentals/rentalsSlice";
+import { filterBySearchBar } from "../../helpers/filterBySearchBar";
 
 const Rentals = () => {
   const keys = ["carName", "customerInfo", "companyName", "rentDate"];
@@ -27,20 +28,11 @@ const Rentals = () => {
 
   const [filteredSearch, setFilteredSearch] = React.useState("");
 
-  const filterBySearchBar = (data) => {
-    return data.filter(
-      (item) =>
-        keys.some((key) =>
-          item[key]?.toString().toLowerCase().includes(filteredSearch)
-        ) // satırlarca or sorgusu yazmak yerine filtrelerken olabilecekleri listeleyen method some metodudur.
-    );
-  };
-
   useEffect(() => {
     dispatch(fetchAllRentals());
   }, []);
 
-  const filteredCars = filterBySearchBar(allRentals);
+  const filteredCars = filterBySearchBar(keys, allRentals, filteredSearch);
 
   return (
     <TableView

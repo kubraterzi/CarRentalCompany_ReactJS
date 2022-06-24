@@ -9,6 +9,7 @@ import {
 } from "./../../redux/slices/cars/carsSlice";
 import Filter from "../utilities/Filter";
 import { AppBar, Toolbar } from "@mui/material";
+import { filterBySearchBar } from "../../helpers/filterBySearchBar";
 
 const CarList = () => {
   const keys = ["brandName", "colorName", "brandModel", "dailyPrice"];
@@ -19,16 +20,11 @@ const CarList = () => {
   const selectedColor = useSelector((state) => state.colors.currentColor);
   const selectedStatus = useSelector((state) => state.statuses.currentStatus);
 
-  const filterBySearchBar = (data) => {
-    return data.filter(
-      (item) =>
-        keys.some((key) =>
-          item[key]?.toString().toLowerCase().includes(filteredSearch)
-        ) // satırlarca or sorgusu yazmak yerine filtrelerken olabilecekleri listeleyen method some metodudur.
-    );
-  };
-
-  const filteredCarsBySearch = filterBySearchBar(filteredCars);
+  const filteredCarsBySearch = filterBySearchBar(
+    keys,
+    filteredCars,
+    filteredSearch
+  );
 
   useEffect(() => {
     if (selectedBrand === undefined && selectedColor === undefined) {
@@ -70,7 +66,6 @@ const CarList = () => {
 
   return (
     <>
-      {/* <UserLayout> */}
       <AppBar
         position="static"
         sx={{ backgroundColor: "transparent", boxShadow: "none" }}
@@ -88,7 +83,6 @@ const CarList = () => {
           <CarItemCard key={car.carID} car={car} />
         ))}
       </div>
-      {/* </UserLayout> */}
     </>
   );
 };
